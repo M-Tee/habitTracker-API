@@ -1,11 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 3000;
 const router = express.Router();
 const db = mongoose.connect('mongodb://localhost/habittracker');
 const Habit = require('./models/habitModel');
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 router.route('/habits')
   .get((req, res) => {
@@ -16,7 +21,8 @@ router.route('/habits')
         return res.json(habit);
       }
     });  
-  });
+  })
+
 
 app.use('/habittracker', router);
 
