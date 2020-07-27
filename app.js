@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -9,10 +9,14 @@ const Habit = require('./models/habitModel');
 
 router.route('/habits')
   .get((req, res) => {
-    const response = 'My api';
-    return res.json(response);
-  })
-  .post();
+    Habit.find((err, habit) => {
+      if (err) {
+        return res.send(err);
+      } else {
+        return res.json(habit);
+      }
+    });  
+  });
 
 app.use('/habittracker', router);
 
