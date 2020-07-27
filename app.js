@@ -22,6 +22,16 @@ router.route('/habits')
       }
     });  
   })
+  .post((req, res) => {
+    const habit = new Habit(req.body);
+
+    habit.save((err) => {
+      if (err) {
+        return res.sendStatus(404);
+      }
+      return res.json(habit);
+    })
+  });
 
 
 app.use('/habittracker', router);
