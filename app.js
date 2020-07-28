@@ -20,7 +20,7 @@ router.route('/habits')
       } else {
         return res.json(habits);
       }
-    });  
+    });
   })
   .post((req, res) => {
     const habit = new Habit(req.body);
@@ -47,8 +47,49 @@ router.use('/habits/:habitId', (req, res, next) => {
 });
 
 router.route('/habits/:habitId')
-  .get((req, res) => res.json(req.habit));
-  
+  .get((req, res) => res.json(req.habit))
+  .put((req, res) => {
+    const { habit } = req;
+
+    habit.title = req.body.title;
+    habit.description = req.body.description;
+    habit.done = req.body.done;
+
+    habit.save((err) => {
+      if (err) {
+        return res.sendStatus(404);
+      }
+      return res.json(habit);
+    })
+  })
+  .patch((req, res) => {
+    const { habit } = req;
+
+    if (!req.body._id) {
+      delete req.body._id
+    }
+    Object.entries(req.body).forEach((property) => {
+      const key = property[0];
+      const value = property[1];
+      habit[key] = value;
+    })
+
+    req.habit.save((err) => {
+      if (err) {
+        return res.sendStatus(404);
+      }
+      return res.json(habit);
+    })
+  })
+  .delete((req, res) => {
+    req.habit.remove((err) => {
+      if (err) {
+        return res.send(err);
+      }
+      return res.sendStatus(204);
+    });
+  });
+
 app.use('/habittracker', router);
 
 // app.get('/habits', (req, res) => {
