@@ -46,7 +46,9 @@ router.use('/habits/:habitId', (req, res, next) => {
   })
 });
 
-
+router.route('/habits/:habitId')
+  .get((req, res) => res.json(req.habit));
+  
 app.use('/habittracker', router);
 
 // app.get('/habits', (req, res) => {
