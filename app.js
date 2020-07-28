@@ -14,11 +14,11 @@ app.use(bodyParser.json());
 
 router.route('/habits')
   .get((req, res) => {
-    Habit.find((err, habit) => {
+    Habit.find((err, habits) => {
       if (err) {
         return res.send(err);
       } else {
-        return res.json(habit);
+        return res.json(habits);
       }
     });  
   })
@@ -32,6 +32,19 @@ router.route('/habits')
       return res.json(habit);
     })
   });
+
+router.use('/habits/:habitId', (req, res, next) => {
+  Habit.findById(req.params.habitId, (err, habit) => {
+    if (err) {
+      return res.send(err);
+    }
+    if (habit) {
+      req.habit = habit;
+      return next();
+    }
+    return res.sendStatus(404);
+  })
+});
 
 
 app.use('/habittracker', router);
