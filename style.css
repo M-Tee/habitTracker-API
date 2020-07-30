@@ -1,0 +1,26 @@
+*{
+  color: #00000f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.heading{
+  font-size: 1.5em;
+}
+.container{ 
+  width:  40%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card{
+  display: flex;
+  margin: 20px;
+  padding: 5px 20px ;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgb(207, 206, 206);
+}
+.habit-title{
+margin: 15px;
+}
