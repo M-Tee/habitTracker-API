@@ -42,3 +42,10 @@ const container = document.getElementById('root');
     })
 })()
 
+document.getElementById('add').addEventListener('click', () => {
+  document.querySelector('.popup').style.display = "flex";
+});
+
+document.querySelector('.close').addEventListener('click', () => {
+  document.querySelector('.popup').style.display = "none";
+});
