@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HabitTracker</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
   <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 </head>
 
@@ -13,19 +14,23 @@
   <div class="container" id="root">
     <div class="menuBar">
       <h1 class="heading">Habits</h1>
-      <button class="iconify" id= "add" data-icon="carbon:add-filled" data-inline="false" style="color: purple;"></button>
+      <button class="iconify" id="add" data-icon="carbon:add-filled" data-inline="false"
+        style="color: purple;"></button>
     </div>
-    <div class="popup">
+    <div class="popup animate__animated animate__rotateInDownRight">
       <div class="popupContent">
         <span class="iconify close" data-icon="ic:outline-cancel" data-inline="false" style="color: purple;"></span>
-       <h4>New habit</h4>
-      <input type="text" placeholder="Habit Title" id="habit">
-      <input type="text" placeholder="Description" id="description"> 
-      <button>Save</button> 
+        <h4>New habit</h4>
+        <form action="" id="form">
+          <input type="text" placeholder="Habit Title" id="habit">
+        <input type="text" placeholder="Description" id="description">
+        <button type="submit">Save</button>
+        </form>
+        
       </div>
-      
+
     </div>
-    
+
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="index.js"></script>
