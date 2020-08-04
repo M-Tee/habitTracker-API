@@ -43,6 +43,23 @@ let displaySavedHabits = async function () {
 
 displaySavedHabits()
 
+let form = document.getElementById('form');
+
+form.addEventListener('submit',async (event) => {
+  event.preventDefault();
+
+  const title = document.getElementById('habit').value;
+  const description = document.getElementById('description').value;
+
+  const habit = { title, description}
+
+  await axios.post('http://localhost:4000/habittracker/habits', habit)
+
+  .then(
+    displaySavedHabits()
+  )
+})
+
 
 
 // (async () => {
