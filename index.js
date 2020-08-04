@@ -55,7 +55,7 @@ const closePopup = document.querySelector('.close')
 
 const form = document.getElementById('form');
 
-let addHabit = form.addEventListener('submit', async (event) => {
+form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const title = document.getElementById('habit').value;
@@ -64,6 +64,8 @@ let addHabit = form.addEventListener('submit', async (event) => {
     const habit = { title, description }
 
     const response = await axios.post('http://localhost:4000/habittracker/habits', habit)
-
-    return Promise.resolve(response);
+     
+    .then(() => {
+           location.reload()
+    })
   })
