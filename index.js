@@ -64,8 +64,8 @@ form.addEventListener('submit', async (event) => {
     const habit = { title, description }
 
     const response = await axios.post('http://localhost:4000/habittracker/habits', habit)
+ 
+    location.reload()
      
-    .then(() => {
-           location.reload()
-    })
+  
   })
