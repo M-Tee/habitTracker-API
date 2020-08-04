@@ -63,9 +63,7 @@ let addHabit = form.addEventListener('submit', async (event) => {
 
     const habit = { title, description }
 
-    await axios.post('http://localhost:4000/habittracker/habits', habit)
+    const response = await axios.post('http://localhost:4000/habittracker/habits', habit)
 
-      .then(
-        displaySavedHabits()
-      )
+    return Promise.resolve(response);
   })
